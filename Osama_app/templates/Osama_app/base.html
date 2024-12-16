@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shakrina Suppliers Ltd</title>
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/updated_styles.css' %}?{% now 'U' %}">
+    <link href="{% static 'css/base.css' %}?{% now 'U' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(53, 106, 197); ">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="#" alt="" width="50" class="d-inline-block align-text-top">
+                    Shakrina Suppliers Ltd
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/"><i class="fa fa-home"></i> Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#footer"><i class="fa fa-info-circle"></i> About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-briefcase"></i> Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><i class="fa fa-store"></i> Shopping</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#footer"><i class="fa fa-envelope"></i> Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#enquiry"><i class="fa fa-question-circle"></i> Enquiry</a>
+                        </li>
+                        </ul>
+                        <div class='dropdown'>
+                            <button class='btn btn-outline-secondary btn-sm'><i class="fa-regular fa-user"></i>Accounts</button>
+                            <div class='dropdown-content'>
+                                <span><i class="fa-regular fa-user"></i> {{user.username}}</span>
+                                <a href='{% url "accounts:register" %}'>Register</a>
+                                <a href='{% url "accounts:login" %}'>Login</a>
+                        <form action='{% url "accounts:logout" %}' method='post'>
+                            {% csrf_token %}
+                            <button type='submit' class='btn btn-outline-secondary btn-sm'>🔓logout</button>
+                        </form>
+                </div>
+                </div>
+                </div>
+            </div>
+        
+        <div id="subheader">
+            <div class="cart">
+                {% with total_items=cart|length %}
+                {% if total_items > 0 %}
+                <a href="{% url "cart:cart_detail" %}" class="text-white me-3"><i class="fa-solid fa-cart-shopping"></i> {{ total_items }} ${{ cart.get_total_price }}</a>
+                {% elif not order %}
+                <a href="#" class="text-white me-3"><i class="fa-solid fa-cart-shopping"></i></a>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <section class="hero-section text-center text-white d-flex align-items-center" style="background: url('https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') center/cover; height: 60vh;">
+        <div class="container">
+            <h1>Welcome to Shakrina Suppliers Ltd</h1>
+            <p class="lead">Your trusted partner in quality products and reliable supply solutions.</p>
+            <a href="#content" class="btn btn-lg btn-light mt-3">Explore Products</a>
+        </div>
+    </section>
+
+    <section class="about-section py-5">
+        <div class="container text-center">
+            <h2>The Only Supplier You Need</h2>
+            <p>Shakrina General Suppliers offers an extensive range of high-quality products for various industries. From
+                boat manufacturing and engines to general merchandise, we have you covered. Rely on us for supply
+                efficiency and consultancy, ensuring value and reliability in every transaction.</p>
+        </div>
+    </section>
+
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <section id="enquiry" class="contact-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <a href="{% url 'Osama_app:message' %}"><h3 class="text-center">Quick Enquiry</h3></a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer id="footer" class="footer text-light py-4" style="background-color:rgb(53, 106, 197);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h5>About Shakrina Suppliers</h5>
+                <p>Shakrina Suppliers Ltd is your trusted source for high-quality products across diverse industries, from boat manufacturing and engines to general merchandise. We prioritize efficiency and reliability to support your business needs.</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Visit Our Office</h5>
+                <p>Mon - Fri: 7:45am – 5:00pm</p>
+                <p>Langoni Ward, opposite Sea Front Restaurant, Lamu, Kenya</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Contact Us</h5>
+                <p>Phone: +254 790595643</p>
+                <p>Email: shakrinageneralsuppliers@gmail.com</p>
+            </div>
+            <div class="col-md-3">
+                <h5>Follow Us</h5>
+                <div>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center text-dark mt-3 fs-6">
+        <p>&copy;2024 Shakrina General Suppliers Ltd. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+
+</html>

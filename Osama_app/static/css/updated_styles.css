@@ -1,0 +1,84 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: white;
+}
+
+/* Hero Section */
+.hero-section {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+}
+
+/* About Section */
+.about-section h2 {
+    font-size: 2rem;
+    color: #007bff;
+    font-weight: 700;
+}
+
+/* Product Gallery */
+.product-gallery img {
+    max-height: 200px;
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.product-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.product-gallery p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Contact Section */
+.contact-section h3 {
+    font-size: 1.8rem;
+    color: #007bff;
+    font-weight: 700;
+}
+
+.contact-section .btn-primary {
+    background-color: #007bff;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.contact-section .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Footer */
+.footer {
+    background-color: #333;
+    color: #ddd;
+    opacity: 0.8;
+}
+
+.footer h5 {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.footer a {
+    color: #ddd;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #007bff;
+}
